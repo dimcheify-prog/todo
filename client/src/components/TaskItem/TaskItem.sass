@@ -1,0 +1,40 @@
+@import "../../styles/variables.sass"
+@import "../../styles/mixins.sass"
+
+.task-item
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: space-evenly
+  margin: 1rem 0
+  @include respond(big-screen)
+    margin: 1.5rem 0
+  @include respond(tab-land)
+    margin: 1.5rem 0
+  @include respond(tab-port)
+    margin: 1rem 0
+
+  &__task-name
+    font-size: 2rem
+    color: $text-color
+    flex: 1
+    @include respond(big-screen)
+      font-size: 4rem
+    @include respond(tab-land)
+      font-size: 3rem
+    @include respond(tab-port)
+      font-size: 2.5rem
+    @include respond(phone)
+      font-size: 2rem
+
+  &__button
+    flex: 1
+    cursor: pointer
+  &__checkmark
+    flex: 1
+
+
+.done
+  opacity: 1
+.undone
+  opacity: 0.3

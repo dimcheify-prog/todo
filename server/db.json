@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "email": "qwerty@mail.ru",
+      "password": "$2a$10$wZ6KCXEPPKVMy0gSMKhpCuggetkKMfODQ1RApKsZZ5ZWuOQUQGDiC",
+      "id": 1
+    },
+    {
+      "email": "ca@mail.ru",
+      "password": "$2a$10$hOUrne.R8ZstuOLJJYT37OIZGJzmHDBLHfZF13dLasCeW3OrcEJnu",
+      "id": 2
+    }
+  ],
+  "tasks": [
+    {
+      "id": "0d69cca7-d35a-4906-b661-7da5ec000de9",
+      "title": "cdas",
+      "isComplete": false,
+      "userId": "2"
+    },
+    {
+      "id": "bb4a1294-249b-4521-b72d-1b484add2aa5",
+      "title": "cdas",
+      "isComplete": false,
+      "userId": "2"
+    },
+    {
+      "id": "e033ef00-f37f-4c98-ae88-33371ee49987",
+      "title": "cdascsa",
+      "isComplete": false,
+      "userId": "2"
+    },
+    {
+      "id": "58c95f82-5398-48be-862f-4a84e4346764",
+      "title": "cdascs",
+      "isComplete": false,
+      "userId": "2"
+    },
+    {
+      "id": "57c5edf2-61a7-48d4-9b54-3e6b11acfeee",
+      "title": "vfdsfv",
+      "isComplete": true,
+      "userId": "1"
+    },
+    {
+      "id": "2080d0fe-9223-47df-a7bf-2fbe4c20f63d",
+      "title": "cdas",
+      "isComplete": false,
+      "userId": "1"
+    }
+  ]
+}

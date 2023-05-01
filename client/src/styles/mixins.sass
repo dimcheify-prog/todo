@@ -1,0 +1,61 @@
+@mixin styled-input
+  width: 60%
+  height: 3rem
+  font-size: 2rem
+  padding: 0 .5rem
+  border: 1px solid #12144b
+  border-radius: 5px
+  @include respond(big-screen)
+    font-size: 3rem
+    height: 5rem
+    padding: 0 1rem
+  @include respond(tab-land)
+    font-size: 2.5rem
+    width: 70%
+    height: 4rem
+    padding: 0 1rem
+  @include respond(tab-port)
+    font-size: 2rem
+    height: 3.5rem
+  @include respond(phone)
+    font-size: 1.6rem
+    height: 3rem
+  &:focus
+    outline: none
+    border: 2px solid #12144b
+
+@mixin styled-button
+  background: #61989d
+  border: none
+  padding: .5rem 3rem
+  font-size: 1.6rem
+  cursor: pointer
+  border-radius: 5px
+  @include respond(big-screen)
+    padding: 1.5rem 6rem
+    font-size: 3rem
+  @include respond(tab-land)
+    padding: .7rem 3.7rem
+    font-size: 3rem
+  @include respond(tab-port)
+    padding: .5rem 3rem
+    font-size: 2.5rem
+  @include respond(phone)
+    font-size: 1.6rem
+
+@mixin respond($breakpoint)
+  @if $breakpoint == phone
+    @media only screen and (max-width: 600px)
+      @content
+
+  @if $breakpoint == tab-port
+    @media only screen and (max-width: 900px)
+      @content
+
+  @if $breakpoint == tab-land
+    @media only screen and (max-width: 1240px)
+      @content
+
+  @if $breakpoint == big-screen
+    @media only screen and (min-width: 1800px)
+      @content

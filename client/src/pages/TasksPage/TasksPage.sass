@@ -1,0 +1,50 @@
+@import "../../styles/variables.sass"
+@import "../../styles/mixins.sass"
+
+.tasks-page
+  width: 100%
+  min-height: 100vh
+  background: $color-light-black
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  align-items: center
+
+  &__title
+    color: $text-color
+    font-size: 2.5rem
+    margin: 5rem
+    @include respond(big-screen)
+      font-size: 4rem
+    @include respond(tab-land)
+      font-size: 3.5rem
+    @include respond(tab-port)
+      font-size: 2.5rem
+    @include respond(phone)
+      font-size: 2rem
+
+  &__button
+    @include styled-button
+    align-self: flex-end
+
+  &__plus-button
+    position: fixed
+    background: #61989d
+    top: 80vh
+    right: 10%
+    padding: 1.5rem 3rem
+    color: azure
+    font-size: 5rem
+    border: none
+    border-radius: 50%
+    font-weight: 500
+    cursor: pointer
+    @include respond(big-screen)
+      padding: 4rem 6rem
+      font-size: 6rem
+    @include respond(tab-land)
+      padding: 3rem 5rem
+    @include respond(tab-port)
+      padding: 1.5rem 3rem
+    @include respond(phone)
+      padding: 1rem 3rem

@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "json-server": "^0.17.3",
+    "json-server-auth": "^2.1.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "nodemon": "^2.0.22",
+    "uuid": "^9.0.0"
+  }
+}
