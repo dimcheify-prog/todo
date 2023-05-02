@@ -3,7 +3,7 @@ import {AxiosResponse} from "axios";
 import {ITask} from "../models/ITask";
 
 export default class TasksService {
-    static async getTasks(id: string): Promise<AxiosResponse> {
+    static async getTasks(id: string | null): Promise<AxiosResponse> {
         return api.get(`users/${id}/tasks`);
     };
 
@@ -11,7 +11,7 @@ export default class TasksService {
         return api.delete(`/tasks/${taskId}`);
     };
 
-    static async createTask(userId: string, newTask: ITask) {
+    static async createTask(userId: string | null, newTask: ITask) {
         return api.post(`users/${userId}/tasks`, newTask);
     };
 

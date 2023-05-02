@@ -10,6 +10,10 @@ app.use(cors({
     origin: 'http://localhost:3000',
 }));
 
+app.use(function(req, res, next){
+    setTimeout(next, 500);
+});
+
 app.db = router.db;
 
 const rules = auth.rewriter({

@@ -5,6 +5,7 @@ import axios, {AxiosError} from "axios";
 import {AuthResponse} from "../models/response/AuthResponse";
 import {API_URL} from "../http";
 import AppStore from "./store";
+import {ITask} from "../models/ITask";
 
 export default class Auth {
     user = {} as IUser;
@@ -33,10 +34,11 @@ export default class Auth {
     }
 
     async login(email: string, password: string) {
+        this.setLoading(true);
         try {
             const response = await AuthService.login(email, password);
-            this.setLoading(true);
             localStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('id', response.data.user.id);
             this.setAuth(true);
             this.setUser(response.data.user);
         } catch (err) {
@@ -49,10 +51,11 @@ export default class Auth {
     };
 
     async registration(email: string, password: string) {
+        this.setLoading(true);
         try {
-            this.setLoading(true);
             const response = await AuthService.registration(email, password);
             localStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('id', response.data.user.id);
             this.setAuth(true);
             this.setUser(response.data.user);
         } catch (err) {
@@ -66,8 +69,10 @@ export default class Auth {
 
     async logout() {
         try {
-            // const response = await AuthService.logout();
+            localStorage.removeItem('id');
             localStorage.removeItem('token');
+            this.store.tasks.updateFilter('all');
+            this.store.tasks.setTasks([]);
             this.setAuth(false);
             this.setUser({} as IUser);
         } catch (err) {
@@ -75,11 +80,5 @@ export default class Auth {
                 this.setError(err.response!.data!.massage);
             }
         }
-    };
-
-    async checkAuth() {
-        this.setLoading(true);
-        this.setAuth(true);
-        this.setLoading(false);
     };
 };

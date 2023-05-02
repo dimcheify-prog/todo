@@ -7,7 +7,7 @@ import ErrorHandler from "../../components/ErrorHandler/ErrorHandler";
 import "./TasksPage.sass";
 import ModalCreate from "../../components/ModalCreate/ModalCreate";
 import FilterBar from "../../components/FilterBar/FilterBar";
-import TaskItem from "../../components/TaskItem/TaskItem";
+import {PulseLoader} from "react-spinners";
 
 const TasksPage: FC = () => {
     const [showModal, setShowModal] = useState(false);
@@ -23,12 +23,16 @@ const TasksPage: FC = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        store.tasks.fetchTasks(store.auth.user.id);
+    useEffect( () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            const userId = localStorage.getItem('id');
+            store.tasks.fetchTasks(userId);
+        }
     }, []);
 
-    const handleClick = () => {
-        store.auth.logout();
+    const handleClick = async () => {
+        await store.auth.logout();
         navigate('/login');
     };
 
@@ -39,9 +43,9 @@ const TasksPage: FC = () => {
             <div className="tasks-page">
                 {store.tasks.error ? <ErrorHandler error={store.tasks.error}/> : null}
                 <button className="tasks-page__button" onClick={handleClick}>Выход</button>
-                <h2 className="tasks-page__title">Задачи пользователя {store.auth.user.email}</h2>
+                <h2 className="tasks-page__title">Ваши задачи</h2>
                 <FilterBar/>
-                <TasksList tasks={store.tasks.todoFilter}/>
+                {store.tasks.isLoading ? <PulseLoader/> : <TasksList tasks={store.tasks.todoFilter}/>}
                 <ModalCreate active={showModal} close={onClose}/>
                 <button className="tasks-page__plus-button" onClick={popUp}>+</button>
             </div>

@@ -13,10 +13,12 @@ interface IModalChangeProps {
 const ModalCreate: FC<IModalChangeProps> = ({active, close}) => {
     const {store} = useContext(AppContext);
 
+    const userId = localStorage.getItem('id');
+
     const title = useInput('', {isEmpty: true, minLength: 3});
 
     const handlerClick = () => {
-        store.tasks.addTask(store.auth.user.id, title.value);
+        store.tasks.addTask(userId, title.value);
         title.onReset();
         close();
     };

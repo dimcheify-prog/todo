@@ -1,21 +1,21 @@
 import React, {FC, SyntheticEvent, useContext} from 'react';
-import "./RegisterForm.sass";
+import "./RegistrationForm.sass";
 import ErrorHandler from "../ErrorHandler/ErrorHandler";
 import {Link, useNavigate} from "react-router-dom";
 import {useInput} from "../../hooks/useInput";
 import {AppContext} from "../../index";
 import {observer} from "mobx-react-lite";
 
-const RegisterForm: FC = () => {
+const RegistrationForm: FC = () => {
     const email = useInput('', {isEmail: false, isEmpty: true});
     const password = useInput('', {isEmpty: true, minLength: 5});
 
     const {store} = useContext(AppContext);
     const navigate = useNavigate();
 
-    const handlerSubmit = (e: SyntheticEvent) => {
+    const handlerSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
-        store.auth.registration(email.value, password.value);
+        await store.auth.registration(email.value, password.value);
         navigate('/tasks');
     };
     return (
@@ -35,4 +35,4 @@ const RegisterForm: FC = () => {
     );
 };
 
-export default observer(RegisterForm);
+export default observer(RegistrationForm);

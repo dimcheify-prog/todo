@@ -60,10 +60,10 @@ export default class Tasks {
         this.tasks.push(newTask);
     };
 
-    async fetchTasks(id: string) {
+    async fetchTasks(id: string | null) {
+        this.setLoading(true);
         try {
             const response = await TasksService.getTasks(id);
-            this.setLoading(true);
             this.setTasks(response.data);
         } catch (err) {
             if (err instanceof AxiosError){
@@ -99,7 +99,7 @@ export default class Tasks {
         }
     };
 
-    async addTask(userId: string, taskTitle: string,) {
+    async addTask(userId: string | null, taskTitle: string,) {
         try {
             const newTask = {
                 id: v4(),
